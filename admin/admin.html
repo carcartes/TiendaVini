@@ -94,79 +94,34 @@
     </div>
 
     <!-- Contenido -->
-<div class="container">
-    <!-- Gráficos de estadísticas -->
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Ventas Mensuales</h5>
-                </div>
-                <div class="card-body">
-                    <canvas id="ventas-chart"></canvas>
+    <div class="container">
+        <!-- Gráficos de estadísticas -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Ventas Mensuales</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="ventas-chart"></canvas>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Registros de Usuarios</h5>
-                </div>
-                <div class="card-body">
-                    <canvas id="usuarios-chart"></canvas>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Registros de Usuarios</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="usuarios-chart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- JavaScript para inicializar los gráficos -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    // Datos de ejemplo para los gráficos
-    const ventasData = {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
-        datasets: [{
-            label: 'Ventas Mensuales',
-            data: [100, 200, 300, 400, 500, 600],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-        }]
-    };
-    const usuariosData = {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
-        datasets: [{
-            label: 'Registros de Usuarios',
-            data: [50, 100, 150, 200, 250, 300],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-        }]
-    };
-
-    // Configuración de los gráficos
-    const chartOptions = {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    };
-
-    // Inicializar gráficos
-    const ventasChart = new Chart(document.getElementById('ventas-chart'), {
-        type: 'bar',
-        data: ventasData,
-        options: chartOptions
-    });
-
-    const usuariosChart = new Chart(document.getElementById('usuarios-chart'), {
-        type: 'line',
-        data: usuariosData,
-        options: chartOptions
-    });
-</script>
+    <!-- JavaScript para inicializar los gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
@@ -174,7 +129,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-
+        <script src="./js/admin.js"></script>
 </body>
 
 </html>
