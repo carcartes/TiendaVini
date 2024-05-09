@@ -16,6 +16,25 @@ document.addEventListener("DOMContentLoaded", function () {
         return true;
     }
 
+    function togglePasswordVisibility(event) {
+        const button = event.currentTarget;
+        const inputId = button.getAttribute("data-target");
+        const input = document.querySelector(inputId);
+        const icon = button.querySelector("i");
+
+        if (input.type === "password") {
+            input.type = "text";
+            icon.classList.replace("fa-eye", "fa-eye-slash"); // Cambia el ícono para indicar que se está mostrando
+        } else {
+            input.type = "password";
+            icon.classList.replace("fa-eye-slash", "fa-eye"); // Cambia el ícono para indicar que se está ocultando
+        }
+    }
+
+    document.querySelectorAll(".toggle-password").forEach((button) => {
+        button.addEventListener("click", togglePasswordVisibility);
+    });
+
     function agregarUsuario() {
         if (!validarFormulario(formularioAgregarUsuario)) {
             return;
@@ -26,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById("emailNuevoUsuario").value;
         const telefono = document.getElementById("telefonoNuevoUsuario").value;
         const rut = document.getElementById("rutNuevoUsuario").value;
+        const contrasena = document.getElementById("contrasenaNuevoUsuario").value;
 
         const tableBody = document.querySelector("tbody");
         const nuevaFila = document.createElement("tr");
@@ -39,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${email}</td>
             <td>${telefono}</td>
             <td>${rut}</td>
+            <td>********</td> <!-- Contraseña oculta -->
             <td>
                 <button class="btn btn-danger btn-eliminar">Eliminar</button>
                 <button class="btn btn-primary btn-editar" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal">Editar</button>
@@ -51,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const modalAgregar = bootstrap.Modal.getInstance(document.getElementById("agregarUsuarioModal"));
         modalAgregar.hide();
 
-        actualizarEventosEditarYEliminar();
+        actualizarEventosEditarYEliminar(); // Vuelve a asignar los eventos para las nuevas filas
     }
 
     function guardarCambiosUsuario() {
@@ -65,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const email = document.getElementById("emailUsuario").value;
         const telefono = document.getElementById("telefonoUsuario").value;
         const rut = document.getElementById("rutUsuario").value;
+        const contrasena = document.getElementById("contrasenaUsuario").value;
 
         const fila = document.querySelector(`tr[data-id-usuario='${idUsuario}']`);
 
@@ -73,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fila.children[3].innerText = email;
         fila.children[4].innerText = telefono;
         fila.children[5].innerText = rut;
+        fila.children[6].innerText = "********"; // Mantener la contraseña oculta en la tabla
 
         editarModal.hide(); // Cierra el modal de edición
     }
@@ -97,27 +120,29 @@ document.addEventListener("DOMContentLoaded", function () {
         const telefono = fila.children[4].innerText;
         const rut = fila.children[5].innerText;
 
-        document.getElementById("idUsuario").value = idUsuario; // Para identificar el usuario al guardar cambios
+        // Al editar, el campo de contraseña queda vacío para que el usuario lo reescriba si lo desea.
+        document.getElementById("idUsuario").value = idUsuario;
         document.getElementById("nombreUsuario").value = nombre;
         document.getElementById("apellidoUsuario").value = apellido;
         document.getElementById("emailUsuario").value = email;
         document.getElementById("telefonoUsuario").value = telefono;
         document.getElementById("rutUsuario").value = rut;
+        document.getElementById("contrasenaUsuario").value = "";
 
         editarModal.show(); // Muestra el modal de edición
     }
 
     function actualizarEventosEditarYEliminar() {
-        document.querySelectorAll(".btn-eliminar").forEach(function (btn) {
+        document.querySelectorAll(".btn-eliminar").forEach((btn) => {
             btn.removeEventListener("click", btnEliminarEventHandler);
             btn.addEventListener("click", btnEliminarEventHandler);
         });
 
-        document.querySelectorAll(".btn-editar").forEach(function (btn) {
+        document.querySelectorAll(".btn-editar").forEach((btn) => {
             btn.removeEventListener("click", btnEditarEventHandler);
             btn.addEventListener("click", btnEditarEventHandler);
         });
     }
 
-    actualizarEventosEditarYEliminar();
+    actualizarEventosEditarYEliminar(); // Asigna eventos para las nuevas filas
 });

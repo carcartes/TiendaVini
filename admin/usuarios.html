@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,23 +11,37 @@
     <link rel="icon" href="./img/vinilo.png" type="image/png">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
+
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3" id="menu">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Panel de Administración</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <a class="navbar-brand" href="#">
+                <span class="text-light fs-5 fw-bold">Panel de Administración</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="admin.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="usuarios.html">Usuarios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pedidos.html">Pedidos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="inventario.html">Inventario</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="usuarios.html">Usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pedidos.html">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="inventario.html">Inventario</a>
+                    </li>
                 </ul>
+                <!-- Enlace para salir -->
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="../usuario/indexiniciado.html">Salir</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../usuario/indexiniciado.html">Salir</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -43,6 +58,7 @@
                     <th>Email</th>
                     <th>Teléfono</th>
                     <th>RUT</th>
+                    <th>Contraseña</th> <!-- Nueva columna para la contraseña -->
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -54,52 +70,70 @@
                     <td>usuario1@example.com</td>
                     <td>934567892</td>
                     <td>12345678-9</td>
+                    <td>********</td> <!-- Contraseña oculta -->
                     <td>
-                        <button type="button" class="btn btn-danger btn-eliminar">Eliminar</button>
-                        <button type="button" class="btn btn-primary btn-editar" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal">Editar</button>
+                        <button class="btn btn-danger btn-eliminar">Eliminar</button>
+                        <button class="btn btn-primary btn-editar" data-bs-toggle="modal"
+                            data-bs-target="#editarUsuarioModal">Editar</button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#agregarUsuarioModal">Agregar Usuario</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+            data-bs-target="#agregarUsuarioModal">Agregar Usuario</button>
     </div>
 
     <!-- Modal para editar usuario -->
-    <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body">
                     <form id="formularioEditarUsuario" novalidate>
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombreUsuario" required pattern="^[a-zA-Z\s]+$" minlength="2" maxlength="15">
+                            <input type="text" class="form-control" id="nombreUsuario" required pattern="^[a-zA-Z\s]+$"
+                                minlength="2" maxlength="15">
                             <div class="invalid-feedback">Por favor, ingresa el nombre.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Apellido</label>
-                            <input tipo="text" class="form-control" id="apellidoUsuario" required pattern="^[a-zA-Z\s]+$" minlength="2" maxlength="15">
+                            <input type="text" class="form-control" id="apellidoUsuario" required
+                                pattern="^[a-zA-Z\s]+$" minlength="2" maxlength="15">
                             <div class="invalid-feedback">Por favor, ingresa el apellido.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input tipo="email" class="form-control" id="emailUsuario" required>
+                            <input type="email" class="form-control" id="emailUsuario" required>
                             <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Teléfono</label>
-                            <input tipo="tel" class="form-control" id="telefonoUsuario" required pattern="^\d{9}$">
-                            <div class="invalid-feedback">Por favor, ingresa el teléfono (9 digitos).</div>
+                            <input type="tel" class="form-control" id="telefonoUsuario" required pattern="^\d{9}$">
+                            <div class="invalid-feedback">Por favor, ingresa el teléfono (9 dígitos).</div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">RUT</label>
-                            <input tipo="text" class="form-control" id="rutUsuario" required minlength="9" maxlength="10">
-                            <div class="invalid-feedback">Por favor, ingresa un RUT válido (9-10 caracteres).</div>
+                            <input type="text" class="form-control" id="rutUsuario" pattern="^[0-9]{7,8}-[0-9kK]$" required>
+                            <div class="invalid-feedback">Por favor, ingresa un RUT válido (formato: XXXXXXXX-Z).</div>
                         </div>
-                        <input tipo="hidden" id="idUsuario">
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <div class="input-group"> <!-- Botón para mostrar/ocultar contraseña -->
+                                <input typo="password" class="form-control" id="contrasenaUsuario" required
+                                    minlength="6" maxlength="20">
+                                <button type="button" class="btn btn-outline-secondary toggle-password"
+                                    data-target="#contrasenaUsuario">
+                                    <i class="fas fa-eye"></i> <!-- Ícono de ojo para mostrar -->
+                                </button>
+                            </div>
+                            <div class="invalid-feedback">Por favor, ingresa una contraseña (6-20 caracteres).</div>
+                        </div>
+                        <input type="hidden" id="idUsuario"> <!-- Campo oculto para el ID del usuario -->
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -110,53 +144,69 @@
         </div>
     </div>
 
-<!-- Modal para agregar usuario -->
-<div class="modal fade" id="agregarUsuarioModal" tabindex="-1" aria-labelledby="agregarUsuarioModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="agregarUsuarioModalLabel">Agregar Usuario</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Formulario para agregar usuario -->
-                <form id="formularioAgregarUsuario" novalidate>
-                    <div class="mb-3">
-                        <label class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="nombreNuevoUsuario" required pattern="^[a-zA-Z\s]+$" minlength="2" maxlength="15" >
-                        <div class="invalid-feedback">Por favor, ingresa el nombre.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="apellidoNuevoUsuario" required pattern="^[a-zA-Z\s]+$" minlength="2" maxlength="15" >
-                        <div class="invalid-feedback">Por favor, ingresa el apellido.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" id="emailNuevoUsuario" required>
-                        <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Teléfono</label>
-                        <input type="tel" class="form-control" id="telefonoNuevoUsuario" required pattern="^\d{9}$">
-                        <div class="invalid-feedback">Por favor, ingresa el teléfono (9 digitos).</div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">RUT</label>
-                        <input type="text" class="form-control" id="rutNuevoUsuario" required minlength="9" maxlength="10">
-                        <div class="invalid-feedback">Por favor, ingresa un RUT válido (9-10 caracteres).</div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" id="agregarNuevoUsuario">Agregar</button>
+    <!-- Modal para agregar usuario -->
+    <div class="modal fade" id="agregarUsuarioModal" tabindex="-1" aria-labelledby="agregarUsuarioModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="agregarUsuarioModalLabel">Agregar Usuario</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario para agregar usuario -->
+                    <form id="formularioAgregarUsuario" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombreNuevoUsuario" required
+                                pattern="^[a-zA-Z\s]+$" minlength="2" maxlength="15">
+                            <div class="invalid-feedback">Por favor, ingresa el nombre.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellidoNuevoUsuario" required
+                                pattern="^[a-zA-Z\s]+$" minlength="2" maxlength="15">
+                            <div class="invalid-feedback">Por favor, ingresa el apellido.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailNuevoUsuario" required>
+                            <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefonoNuevoUsuario" required pattern="^\d{9}$">
+                            <div class="invalid-feedback">Por favor, ingresa el teléfono (9 dígitos).</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">RUT</label>
+                            <input type="text" class="form-control" id="rutNuevoUsuario" pattern="^[0-9]{7,8}-[0-9kK]$" required>
+                            <div class="invalid-feedback">Por favor, ingresa un RUT válido (formato: XXXXXXXX-Z).</div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contraseña</label>
+                            <div class="input-group"> <!-- Botón para mostrar/ocultar contraseña -->
+                                <input type="password" class="form-control" id="contrasenaNuevoUsuario" required
+                                    minlength="6" maxlength="20">
+                                <button type="button" class="btn btn-outline-secondary toggle-password"
+                                    data-target="#contrasenaNuevoUsuario">
+                                    <i class="fas fa-eye"></i> <!-- Ícono para mostrar -->
+                                </button>
+                            </div>
+                            <div class ="invalid-feedback">Por favor, ingresa una contraseña (6-20 caracteres).</div>
+                        </div>
+                    </form>
+                </div>
+                <div class = " modal-footer">
+                    <button type="button" class=" btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class=" btn btn-primary" id="agregarNuevoUsuario">Agregar</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/usuarios.js"></script>
 </body>
+
 </html>

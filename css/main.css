@@ -295,3 +295,27 @@ p {
     border-top: 1px solid #dee2e6;
     background: #e9ecef;
 }
+
+/* Estilos para el encabezado de la sección de ubicación */
+h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;  /* Color del texto del encabezado */
+    margin-bottom: 10px;  /* Espacio debajo del encabezado */
+}
+
+/* Estilos para el texto de la ubicación */
+#location {
+    font-size: 1.1rem;  /* Tamaño del texto */
+    color: #555;  /* Color del texto */
+    padding: 10px;  /* Espaciado alrededor del texto */
+    background-color: #f9f9f9;  /* Color de fondo */
+    border: 1px solid #ddd;  /* Borde alrededor del texto */
+    border-radius: 5px;  /* Bordes redondeados */
+}
+
+/* Espaciado entre elementos para dar aire a la sección */
+.container {
+    margin-top: 20px;  /* Espacio encima de la sección de ubicación */
+    padding: 20px;  /* Espaciado interno para la sección */
+}

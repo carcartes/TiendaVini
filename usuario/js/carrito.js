@@ -6,7 +6,7 @@ function toggleCart() {
 }
 
 function addToCart(image, name, artist, price) {
-    const existingItem = cartItems.find(item => item.name === name);
+    const existingItem = cartItems.find((item) => item.name === name);
 
     if (existingItem) {
         existingItem.quantity++;
@@ -16,7 +16,7 @@ function addToCart(image, name, artist, price) {
             name,
             artist,
             price,
-            quantity: 1
+            quantity: 1,
         });
     }
 
@@ -28,7 +28,7 @@ function updateCartDisplay() {
     const cartBody = document.getElementById("cartBody");
     cartBody.innerHTML = ""; // Limpiar el contenido anterior
 
-    cartItems.forEach(item => {
+    cartItems.forEach((item) => {
         const cartItem = document.createElement("div");
         cartItem.className = "cart-item";
 
@@ -53,12 +53,12 @@ function updateCartDisplay() {
 
 function updateCartTotal() {
     const cartTotalElement = document.getElementById("cartTotal").querySelector("p:last-child");
-    const total = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     cartTotalElement.textContent = `$${total.toFixed(2)}`;
 }
 
 function increaseQuantity(name) {
-    const item = cartItems.find(i => i.name === name);
+    const item = cartItems.find((i) => i.name === name);
     if (item) {
         item.quantity++;
         updateCartDisplay();
@@ -66,7 +66,7 @@ function increaseQuantity(name) {
 }
 
 function decreaseQuantity(name) {
-    const item = cartItems.find(i => i.name === name);
+    const item = cartItems.find((i) => i.name === name);
     if (item && item.quantity > 1) {
         item.quantity--;
         updateCartDisplay();
@@ -76,10 +76,15 @@ function decreaseQuantity(name) {
 }
 
 function removeFromCart(name) {
-    cartItems = cartItems.filter(item => item.name !== name);
+    cartItems = cartItems.filter((item) => item.name !== name);
     updateCartDisplay();
 }
 
 function checkout() {
-    window.location.href = "checkout.html"; // Redirige al usuario a la página de pago
+    if (cartItems.length > 0) { // Comprobar si el carrito no está vacío
+        window.location.href = "checkout.html"; // Redirige al usuario a la página de pago
+    } else {
+        // Puedes mostrar un mensaje de advertencia o indicar que el carrito está vacío
+        alert("El carrito está vacío. Por favor, añade elementos antes de realizar la compra.");
+    }
 }

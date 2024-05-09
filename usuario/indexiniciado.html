@@ -10,12 +10,13 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
     <!-- Font Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <!-- Icono de la pagina -->
     <link rel="icon" href="./img/vinilo.png" type="image/png">
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
@@ -100,32 +101,44 @@
         </button>
     </div>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h5>Vinyl Store</h5>
-                <p>Tu tienda de vinilos favorita.</p>
-                <p>Dirección: Calle Falsa 123, Ciudad Falsa, País Falso</p>
-                <p>Teléfono: +123456789</p>
-            </div>
-            <div class="col-md-6 text-end">
-                <!-- Iconos de redes sociales -->
-                <a href="https://web.facebook.com/LuisJaraOficial/?locale=es_LA&_rdc=1&_rdr" class="social-icon"><i class="fab fa-facebook"></i></a>
-                <a href="https://twitter.com/OficialLuisjara" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/luisjaraoficial/?hl=en" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <!-- Fin de iconos de redes sociales -->
-                <p>&copy; 2024 Vinyl Store. Todos los derechos reservados.</p>
+    <!-- Sección para mostrar la ubicación basada en IP -->
+    <div class="container mt-4">
+        <h2>Tu ubicación:</h2>
+        <p id="location">Cargando...</p>
+    </div>
+
+    <!-- Código para obtener ubicación basada en IP usando ipapi -->
+    <script src="./js/geolocal.js">
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Vinyl Store</h5>
+                    <p>Tu tienda de vinilos favorita.</p>
+                    <p>Dirección: Calle Falsa 123, Ciudad Falsa, País Falso</p>
+                    <p>Teléfono: +123456789</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <!-- Iconos de redes sociales -->
+                    <a href="https://web.facebook.com/LuisJaraOficial/?locale=es_LA&_rdc=1&_rdr" class="social-icon"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/OficialLuisjara" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/luisjaraoficial/?hl=en" class="social-icon"><i
+                            class="fab fa-instagram"></i></a>
+                    <!-- Fin de iconos de redes sociales -->
+                    <p>&copy; 2024 Vinyl Store. Todos los derechos reservados.</p>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-<!-- Bootstrap JS (opcional si necesitas funcionalidades de Bootstrap) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    <!-- Bootstrap JS (opcional si necesitas funcionalidades de Bootstrap) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
