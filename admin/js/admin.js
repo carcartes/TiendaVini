@@ -42,3 +42,4 @@
         data: usuariosData,
         options: chartOptions
     });
+    
